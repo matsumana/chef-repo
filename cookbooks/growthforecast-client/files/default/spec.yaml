@@ -1,0 +1,108 @@
+config:
+  host: growthforecast
+  port: 5125
+  debug: true
+  getall: false
+specs:
+  - name: 'myconfig'
+    keywords:
+      - 'appname'
+    check:
+      # 個別グラフ HTTPステータス
+      - name: 'metrics01'
+        path: 'http_status/${appname}/2xx_count'
+      - name: 'metrics02'
+        path: 'http_status/${appname}/3xx_count'
+      - name: 'metrics03'
+        path: 'http_status/${appname}/429_count'
+      - name: 'metrics04'
+        path: 'http_status/${appname}/4xx_count'
+      - name: 'metrics05'
+        path: 'http_status/${appname}/5xx_count'
+      - name: 'metrics06'
+        path: 'http_status/${appname}/unmatched_count'
+
+      # 個別グラフ レスポンスタイム
+      - name: 'metrics01'
+        path: 'response_time/${appname}/${appname}_-100ms_percentage'
+      - name: 'metrics02'
+        path: 'response_time/${appname}/${appname}_-10ms_percentage'
+      - name: 'metrics03'
+        path: 'response_time/${appname}/${appname}_-1s_percentage'
+      - name: 'metrics04'
+        path: 'response_time/${appname}/${appname}_-3s_percentage'
+      - name: 'metrics05'
+        path: 'response_time/${appname}/${appname}_3s-_percentage'
+      - name: 'metrics06'
+        path: 'response_time/${appname}/${appname}_unmatched_percentage'
+
+    edit:
+      # 個別グラフ HTTPステータス
+      - name: 'metrics01'
+        path: 'http_status/${appname}/2xx_count'
+        color: '#996633'
+      - name: 'metrics02'
+        path: 'http_status/${appname}/3xx_count'
+        color: '#336699'
+      - name: 'metrics03'
+        path: 'http_status/${appname}/429_count'
+        color: '#993366'
+      - name: 'metrics04'
+        path: 'http_status/${appname}/4xx_count'
+        color: '#6633cc'
+      - name: 'metrics05'
+        path: 'http_status/${appname}/5xx_count'
+        color: '#cc3366'
+      - name: 'metrics06'
+        path: 'http_status/${appname}/unmatched_count'
+        color: '#66cc99'
+
+      # 個別グラフ レスポンスタイム
+      - name: 'metrics01'
+        path: 'response_time/${appname}/${appname}_-100ms_percentage'
+        color: '#996633'
+      - name: 'metrics02'
+        path: 'response_time/${appname}/${appname}_-10ms_percentage'
+        color: '#336699'
+      - name: 'metrics03'
+        path: 'response_time/${appname}/${appname}_-1s_percentage'
+        color: '#993366'
+      - name: 'metrics04'
+        path: 'response_time/${appname}/${appname}_-3s_percentage'
+        color: '#6633cc'
+      - name: 'metrics05'
+        path: 'response_time/${appname}/${appname}_3s-_percentage'
+        color: '#cc3366'
+      - name: 'metrics06'
+        path: 'response_time/${appname}/${appname}_unmatched_percentage'
+        color: '#66cc99'
+
+      # 複合グラフ HTTPステータス
+      - name: 'complex http_status'
+        path: '${appname}/complex/http_status'
+        complex: true
+        stack: true
+        type: 'AREA'
+        data:
+          - path: 'http_status/${appname}/2xx_count'
+          - path: 'http_status/${appname}/3xx_count'
+          - path: 'http_status/${appname}/429_count'
+          - path: 'http_status/${appname}/4xx_count'
+          - path: 'http_status/${appname}/5xx_count'
+          - path: 'http_status/${appname}/unmatched_count'
+            type: 'AREA'
+
+      # 複合グラフ レスポンスタイム
+      - name: 'complex response_time'
+        path: '${appname}/complex/response_time'
+        complex: true
+        stack: true
+        type: 'AREA'
+        data:
+          - path: 'response_time/${appname}/${appname}_-100ms_percentage'
+          - path: 'response_time/${appname}/${appname}_-10ms_percentage'
+          - path: 'response_time/${appname}/${appname}_-1s_percentage'
+          - path: 'response_time/${appname}/${appname}_-3s_percentage'
+          - path: 'response_time/${appname}/${appname}_3s-_percentage'
+          - path: 'response_time/${appname}/${appname}_unmatched_percentage'
+            type: 'AREA'
