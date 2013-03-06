@@ -14,10 +14,10 @@ cookbook_file '/tmp/spec.yaml' do
   mode   '0644'
 end
 
-script 'install' do
+script 'exec' do
   interpreter 'bash'
   flags '-e'
   code <<-'EOF'
-    gfclient /tmp/spec.yaml myconfig Myapp
+    gfclient /tmp/spec.yaml --force myconfig Myapp
   EOF
 end

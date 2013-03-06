@@ -8,7 +8,7 @@ specs:
     keywords:
       - 'appname'
     check:
-      # 個別グラフ HTTPステータス
+      # グラフ HTTPステータス
       - name: 'metrics01'
         path: 'http_status/${appname}/2xx_count'
       - name: 'metrics02'
@@ -22,7 +22,7 @@ specs:
       - name: 'metrics06'
         path: 'http_status/${appname}/unmatched_count'
 
-      # 個別グラフ レスポンスタイム
+      # グラフ レスポンスタイム
       - name: 'metrics01'
         path: 'response_time/${appname}/${appname}_-100ms_percentage'
       - name: 'metrics02'
@@ -37,45 +37,45 @@ specs:
         path: 'response_time/${appname}/${appname}_unmatched_percentage'
 
     edit:
-      # 個別グラフ HTTPステータス
+      # グラフ HTTPステータス
       - name: 'metrics01'
         path: 'http_status/${appname}/2xx_count'
-        color: '#996633'
+        color: '#33cc33'
       - name: 'metrics02'
         path: 'http_status/${appname}/3xx_count'
-        color: '#336699'
+        color: '#0066ff'
       - name: 'metrics03'
         path: 'http_status/${appname}/429_count'
-        color: '#993366'
+        color: '#9900cc'
       - name: 'metrics04'
         path: 'http_status/${appname}/4xx_count'
-        color: '#6633cc'
+        color: '#ff9900'
       - name: 'metrics05'
         path: 'http_status/${appname}/5xx_count'
-        color: '#cc3366'
+        color: '#ff0000'
       - name: 'metrics06'
         path: 'http_status/${appname}/unmatched_count'
-        color: '#66cc99'
+        color: '#ff3399'
 
-      # 個別グラフ レスポンスタイム
+      # グラフ レスポンスタイム
       - name: 'metrics01'
         path: 'response_time/${appname}/${appname}_-100ms_percentage'
-        color: '#996633'
+        color: '#33cc33'
       - name: 'metrics02'
         path: 'response_time/${appname}/${appname}_-10ms_percentage'
-        color: '#336699'
+        color: '#0066ff'
       - name: 'metrics03'
         path: 'response_time/${appname}/${appname}_-1s_percentage'
-        color: '#993366'
+        color: '#9900cc'
       - name: 'metrics04'
         path: 'response_time/${appname}/${appname}_-3s_percentage'
-        color: '#6633cc'
+        color: '#ff9900'
       - name: 'metrics05'
         path: 'response_time/${appname}/${appname}_3s-_percentage'
-        color: '#cc3366'
+        color: '#ff0000'
       - name: 'metrics06'
         path: 'response_time/${appname}/${appname}_unmatched_percentage'
-        color: '#66cc99'
+        color: '#ff3399'
 
       # 複合グラフ HTTPステータス
       - name: 'complex http_status'
