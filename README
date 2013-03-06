@@ -1,5 +1,28 @@
-CentOS6.3での手順
+■GrowthForecast ※CentOS6.3でのみ確認
+以下を参照にしました。ありがとうございます。
+http://d.hatena.ne.jp/inouetakuya/20130211/1360570283
+http://d.hatena.ne.jp/inouetakuya/20130211/1360570283
 
+# yum install pkgconfig glib2-devel gettext libxml2-devel pango-devel cairo-devel cpan
+# perl -MCPAN -e 'install IPC::Cmd'
+# useradd growthforecast
+# passwd growthforecast
+# su - growthforecast
+
+$ curl -kL http://install.perlbrew.pl | bash
+$ echo '[[ -s "$HOME/perl5/perlbrew/etc/bashrc" ]] && source "$HOME/perl5/perlbrew/etc/bashrc"' >> .bash_profile
+$ source $HOME/perl5/perlbrew/etc/bashrc
+$ perlbrew available
+$ perlbrew install perl-5.16.2
+$ perlbrew switch perl-5.16.2
+$ perl -v
+$ perlbrew install-cpanm
+$ cpanm -n GrowthForecast
+$ mkdir /home/growthforecast/data
+$ mkdir /home/growthforecast/log
+$ growthforecast.pl --data-dir=/home/growthforecast/data > /home/growthforecast/log/growthforecast.log 2> /home/growthforecast/log/growthforecast.err &
+
+■rbenv + ruby-buildのインストール手順 ※CentOS6.3でのみ確認
 # rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 # yum check-update
 # yum update
@@ -25,10 +48,10 @@ CentOS6.3での手順
 # ./install.sh
 
 # vi /etc/profile.d/rbenv.sh
-↓
-# export RBENV_ROOT="/usr/local/rbenv"
-# export PATH="/usr/local/rbenv/bin:$PATH"
-# eval "$(rbenv init -)"
+↓ 以下の内容をコピペ
+export RBENV_ROOT="/usr/local/rbenv"
+export PATH="/usr/local/rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # visudo
 ↓
