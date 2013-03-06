@@ -5,12 +5,20 @@ cookbook_file '/etc/yum.repos.d/td.repo' do
   mode   '0644'
 end
 
-script 'install' do
+script 'yum_update' do
   interpreter 'bash'
   flags '-e'
   code <<-'EOF'
-    yum install -y td-agent
+    yum update
   EOF
+end
+
+%w{
+   td-agent
+}.each do |package_name|
+  package package_name do
+    action :install
+  end
 end
 
 cookbook_file '/etc/td-agent/td-agent.conf' do
