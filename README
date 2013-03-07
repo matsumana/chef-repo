@@ -1,6 +1,6 @@
 ■fluent-agent-liteのインストール時に依存症を解決出来ないライブラリをインストール ※CentOS6.3でのみ確認
 # yum install -y cpan
-# perl -MCPAN -e 'install IPC::Cmd
+# perl -MCPAN -e 'install IPC::Cmd'
 tail対象のログファイルが無いとfluent-agent-liteが起動しないので、Apacheが起動するようにしておきます。
 fluent-agent-liteが起動しない場合はtail対象のログファイルがあるか確認してください。
 # chkconfig httpd on
