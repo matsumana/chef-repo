@@ -1,4 +1,5 @@
-#■fluent-agent-liteのインストール時に依存症を解決出来ないライブラリをインストール ※CentOS6.3でのみ確認
+#■fluent-agent-liteのインストール時に依存症を解決出来ないライブラリをインストール
+#####※CentOS6.3でのみ確認
     # yum install -y cpan
     # perl -MCPAN -e 'install IPC::Cmd'
 
